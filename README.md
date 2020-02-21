@@ -16,7 +16,7 @@ Clone the repository
 
 ```
 git clone https://github.com/Pramod0215/Toilet-allocation/
-```
+
 
 For Frontend which is ReactJS,
 Dependencies are: 
