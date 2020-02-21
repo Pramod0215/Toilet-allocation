@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+}
+
+.style-unordered-list {
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.google-covert{
+      border: 1px solid #ccc;
+      box-shadow: -1px 2px 4px #ccc;
+      width: 100%; 
+}
+.location-box {
+  height: 40px;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.style-list {
+  cursor: pointer;
+  list-style: none;
+  border-bottom: 1px solid #aaa;
+  height: 40px;
+  padding-left: 20px;
+  line-height: 40px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+.style-list:hover {
+background-color: #e7e7e7;
+}
+.current-loc-ico{
+  height: 17px;
+  padding-right: 10px;
+
+}
+
+input{
+  border: none;
+  background-color: rgb(232, 248, 232);
+  height: 50px;
+  width: 10%;
+  margin: 1%;
+}
+
+select{
+  border: none;
+  background-color: rgb(232, 248, 232);
+  height: 42px;
+  width: 300px;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin: 20px;
+}
+
+
+table, th, td {
+  
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th  {
+  background-color: aquamarine;  
+  padding: 15px;
+  text-align: left;
+}
+td  {
+    
+  padding: 30px;
+  text-align: left;
+}
+table {
+     width: 100%; 
+  background-color: #f1f1c1;
+  margin-bottom: 40px;
+} 
+.body1container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: cornflowerblue 3px solid;
+}
+.heading{
+  width: 100%;
+  height: 100px;
+  background-color: coral;
+  align-items: center;
+  border: cornflowerblue 3px solid;
+}
+.body-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: auto;
+  width: 100%;
+  
+  border: cornflowerblue 3px solid;
+}
+.body-content-left{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: cornflowerblue 3px solid;
+}
+.body-content-right{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border: cornflowerblue 3px solid;
+  background-image: url(https://images.unsplash.com/photo-1570439484439-73079fa1b6b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+  background-size: cover;
+}
