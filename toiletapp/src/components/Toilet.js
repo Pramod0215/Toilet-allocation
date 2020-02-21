@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Map from './googlemapContainer';
 
  
 class Addlist extends Component {

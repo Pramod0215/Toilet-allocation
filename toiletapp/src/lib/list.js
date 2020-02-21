@@ -8,12 +8,12 @@ export const toilets = [
             "rating": '3',
             "likes": 200
         }],
-       'gender':'Male',
+       'gender':'M',
        'country':'India',
        'city':'Banglore',
-        'area':'btm',
-        'chargable':'free',
-        'age':'adult',
+        'area':'Btm',
+        'chargable':'Free',
+        'age':'Adult',
         'rate':'5'
     },
     {
@@ -22,15 +22,31 @@ export const toilets = [
                 "id": 1,
                 "name": 'SBM',
                
-                "rating": '3',
+                "rating": '3.2',
                 "likes": 200
             }],
-        'gender':'Male',
+            'gender':'M',
         'country':'India',
        'city':'Banglore',
-        'area':'btm',
+        'area':'Btm',
          'chargable':'Paid',
-         'age':'adult',
+         'age':'Adult',
+     },
+     {
+        'toiletName':[
+            {
+                "id": 1,
+                "name": 'SDM',
+               
+                "rating": '3.5',
+                "likes": 200
+            }],
+            'gender':'M',
+        'country':'India',
+        'city':'Banglore',
+         'area':'Btm',
+         'chargable':'Paid',
+         'age':'Child',
      },
      {
         'toiletName':[
@@ -41,108 +57,92 @@ export const toilets = [
                 "rating": '3',
                 "likes": 200
             }],
-        'gender':'Male',
+            'gender':'M',
         'country':'India',
         'city':'Banglore',
-         'area':'btm',
-         'chargable':'Paid',
-         'age':'child',
-     },
-     {
-        'toiletName':[
-            {
-                "id": 1,
-                "name": 'SBM',
-               
-                "rating": '3',
-                "likes": 200
-            }],
-        'gender':'Male',
-        'country':'India',
-        'city':'Banglore',
-         'area':'btm',
-         'location':'btm',
-         'chargable':'free',
-         'age':'child',
+         'area':'Btm',
+        
+         'chargable':'Free',
+         'age':'Child',
      },
     {
         'toiletName':[
             {
                 "id": 1,
-                "name": 'SBM',
+                "name": 'SPM',
                
-                "rating": '3',
-                "likes": 200
+                "rating": '4.5',
+                "likes": 400
             }],
-        'gender':'Female',
+            'gender':'M',
         'country':'India',
         'city':'Banglore',
-         'area':'btm',
-         'chargable':'free',
-         'age':'child',
+         'area':'Btm',
+         'chargable':'Free',
+         'age':'Child',
      },
     {
         'toiletName':[
             {
                 "id": 1,
-                "name": 'SBM',
+                "name": 'SDM',
                
                 "rating": '3',
                 "likes": 200
             }],
-        'gender':'Male',
+            'gender':'F',
         'country':'England',
         'city':'Wales',
-         'area':'honor',
+         'area':'Honor',
          'chargable':'Paid',
-         'age':'child',
+         'age':'Child',
      },
     {
         'toiletName':[
             {
                 "id": 1,
-                "name": 'SBM',
+                "name": 'PDM',
                
                 "rating": '3',
                 "likes": 200
             }],
-       'gender':'Male',
+            'gender':'M',
        'country':'Srilanka',
        'city':'Banglore',
-        'area':'btm',
-        'chargable':'free',
-        'age':'adult',
+        'area':'Btm',
+        'chargable':'Free',
+        'age':'Adult',
     },
     {
         'toiletName':[
             {
                 "id": 1,
-                "name": 'SBM',
+                "name": 'BBM',
                
                 "rating": '3',
                 "likes": 200
             }],
-        'gender':'Female',
+        'gender':'F',
         'country':'India',
         'city':'Patna',
          'area':'Kanakrbhag',
-         'chargable':'free',
-         'age':'adult',
+         'chargable':'Free',
+         'age':'Adult',
      },
      {
         'toiletName':[
             {
                 "id": 1,
-                "name": 'SBM',
+                "name": 'QBM',
                
-                "rating": '3',
-                "likes": 200
+                "rating": '4',
+                "likes": 300
             }],
-        'gender':'Male',
+            'gender':'M',
         'country':'India',
         'city':'Hydrabad',
-         'area':'naampali',
+         'area':'Naampali',
          'chargable':'Paid',
-         'age':'child',
+         'age':'Child',
      },
 ];

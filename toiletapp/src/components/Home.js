@@ -1,41 +1,42 @@
 import React, { Component } from 'react';
 import { toilets } from '../lib/list';
 import Modal from 'react-modal';
-
-import { Nav, Navbar } from 'react-bootstrap';
-
+import { Nav, Navbar, ListGroup, ListGroupItem, Card } from 'react-bootstrap';
 
 class SearchName extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gender: '',
-            chargable: '',
-            age: ''
+            gender: this.props.gender,
+            chargable: this.props.chargable,
+            age: this.props.age,
         }
     }
+
     render() {
         return (
             <div className='search'>
-
-
                 <input type="text" onChange={(event) => this.props.searchInfo(event.target.value)} placeholder="Search for country.." />
                 <input type="text" onChange={(event) => this.props.cityInfo(event.target.value)} placeholder="Search for city.." />
                 <input type="text" onChange={(event) => this.props.areaInfo(event.target.value)} placeholder="Search for area.." />
-                <select value={this.state.gender} onChange={(event) => this.props.searchGender(event.target.value)}>
-                    <option value='default'>Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+
+                <select value={this.props.gender} onChange={(event) => this.props.searchGender(event.target.value)}>
+                    <option value=''>Select Gender</option>
+                    <option value='A'>All</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                 </select>
                 <select value={this.state.age} onChange={(event) => this.props.ageInfo(event.target.value)}>
-                    <option value='default'>Select Age</option>
-                    <option value="child">Child</option>
-                    <option value="adult">Adult</option>
+                    <option value=''>Select Age</option>
+                    <option value='A'>All</option>
+                    <option value="Child">Child</option>
+                    <option value="Adult">Adult</option>
                 </select>
                 <select value={this.state.age} onChange={(event) => this.props.chargableInfo(event.target.value)}>
-                    <option value='default'>Select Category</option>
+                    <option value=''>Select Category</option>
+                    <option value='A'>All</option>
                     <option value="Paid">Paid</option>
-                    <option value="free">Free</option>
+                    <option value="Free">Free</option>
                 </select>
 
             </div>
@@ -44,8 +45,10 @@ class SearchName extends Component {
 }
 
 class Home extends Component {
+    
     constructor(props) {
         super(props);
+        let initialrating=0
         this.state = {
             toiletList: toilets,
             age: '',
@@ -55,7 +58,8 @@ class Home extends Component {
             city: '',
             area: '',
             isActive: false,
-            activeItem:toilets[0]
+            activeItem: toilets[0],
+            rating: '',
         }
         this.searchCounty = this.searchCounty.bind(this);
         this.searchCity = this.searchCity.bind(this);
@@ -78,6 +82,7 @@ class Home extends Component {
         this.setState({
             area: text,
         })
+        console.log(text);
     }
     searchGender(text) {
         this.setState({
@@ -98,24 +103,30 @@ class Home extends Component {
         });
         console.log(text);
     }
-    componentWillMount() {
-        Modal.setAppElement('body');
-    }
 
     openDetailsToilet = (loc) => {
         this.setState({
-            isActive:!this.state.isActive,
+            isActive: !this.state.isActive,
             activeItem: loc
         })
     }
 
-    closeDetailsToilet = ()=>{
+    closeDetailsToilet = () => {
         this.setState({
-            isActive:false
+            isActive: false
         })
     }
 
-
+    finalRating(data){
+        const activeItem = this.state.activeItem;
+        const initialRating = activeItem.toiletName[data].rating;
+        const finalrating = (parseInt(initialRating) + parseInt(this.state.rating)) / 2;
+        console.log(initialRating, parseInt(this.state.rating), finalrating, (parseInt(initialRating) + parseInt(this.state.rating)) / 2)
+        activeItem.toiletName[data].rating = finalrating
+        this.setState({
+            activeItem
+        })
+    }
 
     render() {
         let data = this.state.toiletList;;
@@ -128,34 +139,48 @@ class Home extends Component {
                         <Nav.Link href="http://localhost:3000/">Home</Nav.Link>
                     </Nav>
                 </Navbar>
-                <SearchName searchInfo={this.searchCounty} cityInfo={this.searchCity} ageInfo={this.searchArea} searchGender={this.searchGender} ageInfo={this.searchAge} chargableInfo={this.searchIsChargable} />
+                <SearchName searchInfo={this.searchCounty} gender={this.state.gender} cityInfo={this.searchCity} areaInfo={this.searchArea} searchGender={this.searchGender} ageInfo={this.searchAge} chargableInfo={this.searchIsChargable} />
                 <Modal isOpen={this.state.isActive}>
                     <div className='body1container'>
                         <div className='heading'>
-                            <h1>Public Toilet</h1>
-                           
+                            <h1>Public Toilet({this.state.activeItem.area})</h1>
+
                         </div>
                         <div className='body-content'>
                             <div className='body-content-left'>
-                                {/* {data.map((item,index)=>( <div key={index}>
-                                    {item.toiletName.map((item,index)=>(<div key={index}>
-                                    Name : <h4>{item.name}</h4>
-                                    Rating : <h4>{item.rating}</h4>
-                                    Likes : <h4>{item.likes}</h4>
-                                    </div>))}
-                                </div>))} */}
-                                { this.state.activeItem ?
-                                    <h1 style={{ marginTop: "5rem" }}>{this.state.activeItem.toiletName.map((item, index)=>(<div key={index}>
-                                        <span>Name: {item.name}</span><br></br>
-                                        <span>Rating: {item.rating}</span><br></br>
-                                        <span>Likes: {item.likes}</span><br></br>
-                                        </div>))}</h1>
-                                : null }
+
+                                <Card style={{ width: '18rem' }}>
+                                    <Card.Img variant="top" src={require('./index1.jpeg')} />
+                                    {this.state.activeItem ?
+                                        <div >{this.state.activeItem.toiletName.map((item, index) => (<div className='Card' key={index}>
+
+                                            <Card.Body>
+                                                <Card.Title>{item.name}</Card.Title>
+                                                <Card.Text>
+                                                    Clean India, Developed India.
+                                                </Card.Text>
+                                            </Card.Body>
+                                            <ListGroup className="list-group-flush">
+                                                <ListGroupItem>Rating: {item.rating}</ListGroupItem>
+                                                <ListGroupItem>Likes: {item.likes}</ListGroupItem>
+                                                <ListGroupItem> <select className='select-rating' value={this.state.rating} onChange={(event) => this.setState({ rating: event.target.value })}>
+                                                    <option value='0'>Give rating</option>
+                                                    <option value='1'>Very Poor - 1</option>
+                                                    <option value='2'>Poor - 2</option>
+                                                    <option value="3">Good - 3</option>
+                                                    <option value="4">Very good - 4</option>
+                                                    <option value='5'>Excellent - 5</option>
+                                                </select></ListGroupItem>
+                                                <ListGroupItem><button className='rating-submit' onClick={() => this.finalRating(index)}>Submit</button></ListGroupItem>
+                                            </ListGroup>
+                                        </div>))}</div>
+                                        : null}
+                                </Card>
                             </div>
                             <div className='body-content-right'></div>
                         </div>
+                        <button onClick={this.closeDetailsToilet}>Back</button>
                     </div>
-                    <button onClick={this.closeDetailsToilet}>Back</button>
                 </Modal>
                 <table>
                     <thead>
@@ -175,9 +200,9 @@ class Home extends Component {
                             return name.country.toLowerCase().includes(this.state.country.toLowerCase())
                                 && name.city.toLowerCase().includes(this.state.city.toLowerCase())
                                 && name.area.toLowerCase().includes(this.state.area.toLowerCase())
-                                && name.gender.toLowerCase().includes(this.state.gender.toLowerCase())
-                                && name.age.toLowerCase().includes(this.state.age.toLowerCase())
-                                && name.chargable.toLowerCase().includes(this.state.chargable.toLowerCase());
+                                && name.gender.toLowerCase().includes(this.state.gender.toLowerCase() !== 'a' ? this.state.gender.toLowerCase() : '')
+                                && name.age.toLowerCase().includes(this.state.age.toLowerCase() !== 'a' ? this.state.age.toLowerCase() : '')
+                                && name.chargable.toLowerCase().includes(this.state.chargable.toLowerCase() !== 'a' ? this.state.chargable.toLowerCase() : '');
                         }).map((item, index) => (<tr key={index}>
                             <td onClick={() => this.openDetailsToilet(item)}>{item.toiletName.map((item, index) => (<ol key={index}>
                                 {item.name}
