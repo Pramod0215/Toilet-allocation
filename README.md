@@ -9,7 +9,6 @@
 ### How to look rating:
  In the list of toilet click on toiletname get all deatils.
 
-```
 ### Installation
 
 Clone the repository
